@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class AuthorController {
 
     public final AuthorService authorService;
@@ -32,8 +33,8 @@ public class AuthorController {
         authorService.deleteAuthor(id);
     }
 
-    @PostMapping("/addauthor/{author}")
-    public void addAuthor(@PathVariable Author author){
+    @PostMapping("/addauthor")
+    public void addAuthor(@RequestBody Author author){
         authorService.addAuthor(author);
     }
 }

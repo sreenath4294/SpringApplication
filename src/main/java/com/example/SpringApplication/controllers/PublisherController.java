@@ -6,14 +6,12 @@ import com.example.SpringApplication.repositories.PublisherRepository;
 import com.example.SpringApplication.services.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class PublisherController {
 
     public final PublisherService publisherService;
@@ -28,8 +26,8 @@ public class PublisherController {
         return publisherService.getPublishers();
     }
 
-    @PostMapping("/addpublisher/{publisher}")
-    public void addPublisher(@PathVariable Publisher publisher){
+    @PostMapping("/addpublisher")
+    public void addPublisher(@RequestBody Publisher publisher){
         publisherService.addPublisher(publisher);
     }
 }

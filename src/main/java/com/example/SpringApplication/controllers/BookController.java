@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/")
 public class BookController {
 
     public final BookService bookService;
@@ -22,8 +23,8 @@ public class BookController {
         return bookService.getBooks();
     }
 
-    @PostMapping("/addbook/{book}")
-    public void addBook(@PathVariable Book book){
+    @PostMapping("/addbook")
+    public void addBook(@RequestBody Book book){
         bookService.addBook(book);
     }
 }
