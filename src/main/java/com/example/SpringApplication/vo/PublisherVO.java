@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Publisher implements Serializable {
+public class PublisherVO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,22 +18,22 @@ public class Publisher implements Serializable {
 
     @OneToMany
     @JoinColumn(name = "publisher_id")
-    private Set<Book> books = new HashSet<>();
+    private Set<BookVO> books = new HashSet<>();
 
-    public Publisher() {
+    public PublisherVO() {
     }
 
-    public Publisher(String name, String addressLine1, String addressLine2) {
+    public PublisherVO(String name, String addressLine1, String addressLine2) {
         this.name = name;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
     }
 
-    public Set<Book> getBooks() {
+    public Set<BookVO> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<BookVO> books) {
         this.books = books;
     }
 
@@ -84,7 +84,7 @@ public class Publisher implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Publisher publisher = (Publisher) o;
+        PublisherVO publisher = (PublisherVO) o;
 
         return id != null ? id.equals(publisher.id) : publisher.id == null;
     }

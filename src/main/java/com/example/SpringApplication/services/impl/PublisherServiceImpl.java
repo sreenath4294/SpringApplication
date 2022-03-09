@@ -1,6 +1,6 @@
 package com.example.SpringApplication.services.impl;
 
-import com.example.SpringApplication.vo.Publisher;
+import com.example.SpringApplication.vo.PublisherVO;
 import com.example.SpringApplication.repositories.PublisherRepository;
 import org.springframework.stereotype.Component;
 
@@ -15,11 +15,11 @@ public class PublisherServiceImpl {
         this.publisherRepository = publisherRepository;
     }
 
-    public List<Publisher> getPublishers(){
+    public List<PublisherVO> getPublishers(){
         return publisherRepository.findAll();
     }
 
-    public void addPublisher(Publisher publisher){
+    public void addPublisher(PublisherVO publisher){
         publisherRepository.save(publisher);
     }
 }

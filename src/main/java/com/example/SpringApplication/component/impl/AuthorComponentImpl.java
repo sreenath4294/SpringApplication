@@ -1,33 +1,32 @@
-package com.example.SpringApplication.services.impl;
+package com.example.SpringApplication.component.impl;
 
 import com.example.SpringApplication.component.AuthorComponent;
-import com.example.SpringApplication.services.AuthorService;
+import com.example.SpringApplication.dao.AuthorDao;
 import com.example.SpringApplication.vo.AuthorVO;
-import com.example.SpringApplication.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class AuthorServiceImpl implements AuthorService {
+public class AuthorComponentImpl implements AuthorComponent {
 
     @Autowired
-    private AuthorComponent authorComponent;
+    private AuthorDao authorDAO;
 
     public List<AuthorVO> getAuthors(){
-        return authorComponent.getAuthors();
+        return authorDAO.getAuthors();
     }
 
     public void addAuthor(AuthorVO author){
-        authorComponent.addAuthor(author);
+        authorDAO.addAuthor(author);
     }
 
     public AuthorVO getAuthor(Long authorId) {
-        return authorComponent.getAuthor(authorId);
+        return authorDAO.getAuthor(authorId);
     }
 
     public void deleteAuthor(Long id){
-        authorComponent.deleteAuthor(id);
+        authorDAO.deleteAuthor(id);
     }
 }

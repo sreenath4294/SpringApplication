@@ -1,8 +1,8 @@
 package com.example.SpringApplication.cli;
 
-import com.example.SpringApplication.vo.Author;
-import com.example.SpringApplication.vo.Book;
-import com.example.SpringApplication.vo.Publisher;
+import com.example.SpringApplication.vo.AuthorVO;
+import com.example.SpringApplication.vo.BookVO;
+import com.example.SpringApplication.vo.PublisherVO;
 import com.example.SpringApplication.repositories.AuthorRepository;
 import com.example.SpringApplication.repositories.BookRepository;
 import com.example.SpringApplication.repositories.PublisherRepository;
@@ -23,9 +23,9 @@ public class CliStartup  implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception{
-        Author asimov = new Author("Issac", "Assimov");
-        Book robot = new Book("Robot", "52481");
-        Publisher dcBooks = new Publisher("DCBooks", "Kochi", "Kerala");
+        AuthorVO asimov = new AuthorVO("Issac", "Assimov");
+        BookVO robot = new BookVO("Robot", "52481");
+        PublisherVO dcBooks = new PublisherVO("DCBooks", "Kochi", "Kerala");
         asimov.getBooks().add(robot);
         robot.getAuthors().add(asimov);
         dcBooks.getBooks().add(robot);
@@ -35,8 +35,8 @@ public class CliStartup  implements CommandLineRunner {
         publisherRepository.save(dcBooks);
 
 
-        Author shakespheare = new Author("William", "Shakespeare");
-        Book hamlet = new Book("Hamlet", "68532");
+        AuthorVO shakespheare = new AuthorVO("William", "Shakespeare");
+        BookVO hamlet = new BookVO("Hamlet", "68532");
         shakespheare.getBooks().add(hamlet);
         hamlet.getAuthors().add(shakespheare);
         dcBooks.getBooks().add(hamlet);

@@ -1,7 +1,7 @@
 package com.example.SpringApplication.controllers;
 
-import com.example.SpringApplication.vo.Publisher;
-import com.example.SpringApplication.services.impl.PublisherServiceImpl;
+import com.example.SpringApplication.vo.PublisherVO;
+import com.example.SpringApplication.services.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,20 +11,17 @@ import java.util.List;
 @RequestMapping("/api/")
 public class PublisherController {
 
-    public final PublisherServiceImpl publisherService;
-
     @Autowired
-    public PublisherController(PublisherServiceImpl publisherService) {
-        this.publisherService = publisherService;
-    }
+    public PublisherService publisherService;
+
 
     @GetMapping("/publishers")
-    public List<Publisher> getPublishers(){
+    public List<PublisherVO> getPublishers(){
         return publisherService.getPublishers();
     }
 
     @PostMapping("/addpublisher")
-    public void addPublisher(@RequestBody Publisher publisher){
+    public void addPublisher(@RequestBody PublisherVO publisher){
         publisherService.addPublisher(publisher);
     }
 }

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Book implements Serializable {
+public class BookVO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,26 +17,26 @@ public class Book implements Serializable {
 
 
     @ManyToOne
-    private Publisher publisher;
+    private PublisherVO publisher;
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+    private Set<AuthorVO> authors = new HashSet<>();
 
-    public Publisher getPublisher() {
+    public PublisherVO getPublisher() {
         return publisher;
     }
 
-    public Book() {
+    public BookVO() {
     }
 
-    public Book(String title, String isbn) {
+    public BookVO(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
     }
 
-    public void setPublisher(Publisher publisher) {
+    public void setPublisher(PublisherVO publisher) {
         this.publisher = publisher;
     }
 
@@ -64,11 +64,11 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public Set<Author> getAuthors() {
+    public Set<AuthorVO> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<Author> authors) {
+    public void setAuthors(Set<AuthorVO> authors) {
         this.authors = authors;
     }
 
@@ -87,7 +87,7 @@ public class Book implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Book book = (Book) o;
+        BookVO book = (BookVO) o;
 
         return id != null ? id.equals(book.id) : book.id == null;
     }

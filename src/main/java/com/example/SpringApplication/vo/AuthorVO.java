@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author implements Serializable {
+public class AuthorVO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,12 +16,12 @@ public class Author implements Serializable {
     private String lastname;
 
     @ManyToMany (mappedBy = "authors")
-    private Set<Book> books = new HashSet<>();
+    private Set<BookVO> books = new HashSet<>();
 
-    public Author() {
+    public AuthorVO() {
     }
 
-    public Author(String firstname, String lastname) {
+    public AuthorVO(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -50,11 +50,11 @@ public class Author implements Serializable {
         this.lastname = lastname;
     }
 
-    public Set<Book> getBooks() {
+    public Set<BookVO> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<BookVO> books) {
         this.books = books;
     }
 
@@ -73,7 +73,7 @@ public class Author implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Author author = (Author) o;
+        AuthorVO author = (AuthorVO) o;
 
         return id != null ? id.equals(author.id) : author.id == null;
     }
