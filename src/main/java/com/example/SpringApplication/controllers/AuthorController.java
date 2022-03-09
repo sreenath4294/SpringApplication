@@ -1,7 +1,7 @@
 package com.example.SpringApplication.controllers;
 
-import com.example.SpringApplication.model.Author;
-import com.example.SpringApplication.services.AuthorService;
+import com.example.SpringApplication.vo.Author;
+import com.example.SpringApplication.services.impl.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping("/api/")
 public class AuthorController {
 
-    public final AuthorService authorService;
+    public final AuthorServiceImpl authorService;
 
     @Autowired
-    public AuthorController(AuthorService authorService) {
+    public AuthorController(AuthorServiceImpl authorService) {
         this.authorService = authorService;
     }
 

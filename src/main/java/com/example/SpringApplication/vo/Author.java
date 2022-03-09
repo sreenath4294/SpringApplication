@@ -1,11 +1,12 @@
-package com.example.SpringApplication.model;
+package com.example.SpringApplication.vo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author {
+public class Author implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,8 +15,8 @@ public class Author {
     private String firstname;
     private String lastname;
 
-//    @ManyToMany (mappedBy = "authors")
-//    private Set<Book> books = new HashSet<>();
+    @ManyToMany (mappedBy = "authors")
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
@@ -49,13 +50,13 @@ public class Author {
         this.lastname = lastname;
     }
 
-//    public Set<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<Book> books) {
-//        this.books = books;
-//    }
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     @Override
     public String  toString() {
@@ -63,7 +64,7 @@ public class Author {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-//                ", books=" + books +
+                ", books=" + books +
                 '}';
     }
 

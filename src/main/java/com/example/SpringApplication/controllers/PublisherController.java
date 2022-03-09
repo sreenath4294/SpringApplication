@@ -1,11 +1,8 @@
 package com.example.SpringApplication.controllers;
 
-import com.example.SpringApplication.model.Publisher;
-import com.example.SpringApplication.repositories.AuthorRepository;
-import com.example.SpringApplication.repositories.PublisherRepository;
-import com.example.SpringApplication.services.PublisherService;
+import com.example.SpringApplication.vo.Publisher;
+import com.example.SpringApplication.services.impl.PublisherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +11,10 @@ import java.util.List;
 @RequestMapping("/api/")
 public class PublisherController {
 
-    public final PublisherService publisherService;
+    public final PublisherServiceImpl publisherService;
 
     @Autowired
-    public PublisherController(PublisherService publisherService) {
+    public PublisherController(PublisherServiceImpl publisherService) {
         this.publisherService = publisherService;
     }
 

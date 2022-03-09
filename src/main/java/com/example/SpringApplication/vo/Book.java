@@ -1,11 +1,12 @@
-package com.example.SpringApplication.model;
+package com.example.SpringApplication.vo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,17 +15,18 @@ public class Book {
     private String title;
     private String isbn;
 
-//    @ManyToOne
-//    private Publisher publisher;
+
+    @ManyToOne
+    private Publisher publisher;
 
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
-//    public Publisher getPublisher() {
-//        return publisher;
-//    }
+    public Publisher getPublisher() {
+        return publisher;
+    }
 
     public Book() {
     }
@@ -34,9 +36,9 @@ public class Book {
         this.isbn = isbn;
     }
 
-//    public void setPublisher(Publisher publisher) {
-//        this.publisher = publisher;
-//    }
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     public Long getId() {
         return id;

@@ -1,7 +1,7 @@
 package com.example.SpringApplication.controllers;
 
-import com.example.SpringApplication.model.Book;
-import com.example.SpringApplication.services.BookService;
+import com.example.SpringApplication.vo.Book;
+import com.example.SpringApplication.services.impl.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping("/api/")
 public class BookController {
 
-    public final BookService bookService;
+    public final BookServiceImpl bookService;
 
     @Autowired
-    public BookController(BookService bookService) {
+    public BookController(BookServiceImpl bookService) {
         this.bookService = bookService;
     }
 
