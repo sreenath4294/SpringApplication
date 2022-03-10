@@ -8,9 +8,9 @@ public interface AuthorComponent {
     
     List<AuthorVO> getAuthors();
 
-    void addAuthor(AuthorVO author);
-
-    AuthorVO getAuthor(Long authorId);
-
-    void deleteAuthor(Long id);
+//    void addAuthor(AuthorVO authorVO);
+//
+//    AuthorVO getAuthor(Long authorId);
+//
+//    void deleteAuthor(Long id);
 }

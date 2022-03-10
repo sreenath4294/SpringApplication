@@ -1,10 +1,10 @@
-package com.example.SpringApplication.component;
+package com.example.SpringApplication.dao;
 
 import com.example.SpringApplication.vo.PublisherVO;
 
 import java.util.List;
 
-public interface PublisherComponent {
+public interface PublisherDAO {
 
     List<PublisherVO> getPublishers();
 }

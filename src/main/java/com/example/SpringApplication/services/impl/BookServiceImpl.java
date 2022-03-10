@@ -1,25 +1,26 @@
 package com.example.SpringApplication.services.impl;
 
+import com.example.SpringApplication.component.BookComponent;
+import com.example.SpringApplication.services.BookService;
 import com.example.SpringApplication.vo.BookVO;
-import com.example.SpringApplication.repositories.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
-public class BookServiceImpl {
+@Transactional
+public class BookServiceImpl implements BookService {
 
-    private final BookRepository bookRepository;
-
-    public BookServiceImpl(BookRepository bookRepository){
-        this.bookRepository = bookRepository;
-    }
+    @Autowired
+    private BookComponent bookComponent;
 
     public List<BookVO> getBooks(){
-        return bookRepository.findAll();
+        return bookComponent.getBooks();
     }
-
-    public void addBook(BookVO book){
-        bookRepository.save(book);
-    }
+//
+//    public void addBook(BookVO book){
+//        bookRepository.save(book);
+//    }
 }

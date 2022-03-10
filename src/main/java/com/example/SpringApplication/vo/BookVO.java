@@ -5,28 +5,24 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 public class BookVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String title;
     private String isbn;
 
 
-    @ManyToOne
-    private PublisherVO publisher;
+//    @ManyToOne
+//    private PublisherVO publisher;
+//
+//    @ManyToMany
+//    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+//    inverseJoinColumns = @JoinColumn(name = "author_id"))
+//    private Set<AuthorVO> authors = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
-    inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<AuthorVO> authors = new HashSet<>();
-
-    public PublisherVO getPublisher() {
-        return publisher;
-    }
+//    public PublisherVO getPublisher() {
+//        return publisher;
+//    }
 
     public BookVO() {
     }
@@ -36,9 +32,9 @@ public class BookVO implements Serializable {
         this.isbn = isbn;
     }
 
-    public void setPublisher(PublisherVO publisher) {
-        this.publisher = publisher;
-    }
+//    public void setPublisher(PublisherVO publisher) {
+//        this.publisher = publisher;
+//    }
 
     public Long getId() {
         return id;
@@ -64,13 +60,13 @@ public class BookVO implements Serializable {
         this.isbn = isbn;
     }
 
-    public Set<AuthorVO> getAuthors() {
-        return authors;
-    }
+//    public Set<AuthorVO> getAuthors() {
+//        return authors;
+//    }
 
-    public void setAuthors(Set<AuthorVO> authors) {
-        this.authors = authors;
-    }
+//    public void setAuthors(Set<AuthorVO> authors) {
+//        this.authors = authors;
+//    }
 
     @Override
     public String toString() {
@@ -78,7 +74,7 @@ public class BookVO implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
+//                ", authors=" + authors +
                 '}';
     }
 

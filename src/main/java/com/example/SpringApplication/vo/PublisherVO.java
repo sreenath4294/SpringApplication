@@ -5,20 +5,17 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 public class PublisherVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
     private String addressLine1;
     private String addressLine2;
 
-    @OneToMany
-    @JoinColumn(name = "publisher_id")
-    private Set<BookVO> books = new HashSet<>();
+//    @OneToMany
+//    @JoinColumn(name = "publisher_id")
+//    private Set<BookVO> books = new HashSet<>();
 
     public PublisherVO() {
     }
@@ -29,13 +26,13 @@ public class PublisherVO implements Serializable {
         this.addressLine2 = addressLine2;
     }
 
-    public Set<BookVO> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<BookVO> books) {
-        this.books = books;
-    }
+//    public Set<BookVO> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(Set<BookVO> books) {
+//        this.books = books;
+//    }
 
     public Long getId() {
         return id;

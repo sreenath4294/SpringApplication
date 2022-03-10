@@ -5,18 +5,14 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 public class AuthorVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String firstname;
     private String lastname;
 
-    @ManyToMany (mappedBy = "authors")
-    private Set<BookVO> books = new HashSet<>();
+//    @ManyToMany (mappedBy = "authors")
+//    private Set<BookVO> books = new HashSet<>();
 
     public AuthorVO() {
     }
@@ -50,13 +46,13 @@ public class AuthorVO implements Serializable {
         this.lastname = lastname;
     }
 
-    public Set<BookVO> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<BookVO> books) {
-        this.books = books;
-    }
+//    public Set<BookVO> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(Set<BookVO> books) {
+//        this.books = books;
+//    }
 
     @Override
     public String  toString() {
@@ -64,7 +60,7 @@ public class AuthorVO implements Serializable {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", books=" + books +
+//                ", books=" + books +
                 '}';
     }
 

@@ -18,15 +18,15 @@ public class AuthorComponentImpl implements AuthorComponent {
         return authorDAO.getAuthors();
     }
 
-    public void addAuthor(AuthorVO author){
-        authorDAO.addAuthor(author);
-    }
-
-    public AuthorVO getAuthor(Long authorId) {
-        return authorDAO.getAuthor(authorId);
-    }
-
-    public void deleteAuthor(Long id){
-        authorDAO.deleteAuthor(id);
-    }
+//    public void addAuthor(AuthorVO authorVO){
+//        authorDAO.addAuthor(authorVO);
+//    }
+//
+//    public AuthorVO getAuthor(Long authorId) {
+//        return authorDAO.getAuthor(authorId);
+//    }
+//
+//    public void deleteAuthor(Long id){
+//        authorDAO.deleteAuthor(id);
+//    }
 }

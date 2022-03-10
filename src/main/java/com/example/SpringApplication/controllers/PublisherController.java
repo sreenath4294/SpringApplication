@@ -20,8 +20,8 @@ public class PublisherController {
         return publisherService.getPublishers();
     }
 
-    @PostMapping("/addpublisher")
-    public void addPublisher(@RequestBody PublisherVO publisher){
-        publisherService.addPublisher(publisher);
-    }
+//    @PostMapping("/addpublisher")
+//    public void addPublisher(@RequestBody PublisherVO publisher){
+//        publisherService.addPublisher(publisher);
+//    }
 }

@@ -19,18 +19,18 @@ public class AuthorController {
         return authorService.getAuthors();
     }
 
-    @GetMapping("/author/{authorId}")
-    public AuthorVO getAuthor(@PathVariable Long authorId){
-        return authorService.getAuthor(authorId);
-    }
-
-    @DeleteMapping("/delauthor/{authorId}")
-    public void deleteAuthor(@PathVariable("authorId") Long id){
-        authorService.deleteAuthor(id);
-    }
-
-    @PostMapping("/addauthor")
-    public void addAuthor(@RequestBody AuthorVO author){
-        authorService.addAuthor(author);
-    }
+//    @GetMapping("/author/{authorId}")
+//    public AuthorVO getAuthor(@PathVariable Long authorId){
+//        return authorService.getAuthor(authorId);
+//    }
+//
+//    @DeleteMapping("/delauthor/{authorId}")
+//    public void deleteAuthor(@PathVariable("authorId") Long id){
+//        authorService.deleteAuthor(id);
+//    }
+//
+//    @PostMapping("/addauthor")
+//    public void addAuthor(@RequestBody AuthorVO authorVO){
+//        authorService.addAuthor(authorVO);
+//    }
 }

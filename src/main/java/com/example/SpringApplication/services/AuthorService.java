@@ -8,9 +8,9 @@ public interface AuthorService {
     
     List<AuthorVO> getAuthors();
 
-    AuthorVO getAuthor(Long authorId);
-
-    void deleteAuthor(Long id);
-
-    void addAuthor(AuthorVO author);
+//    AuthorVO getAuthor(Long authorId);
+//
+//    void deleteAuthor(Long id);
+//
+//    void addAuthor(AuthorVO authorVO);
 }
