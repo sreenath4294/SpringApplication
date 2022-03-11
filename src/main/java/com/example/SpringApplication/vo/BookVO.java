@@ -11,18 +11,12 @@ public class BookVO implements Serializable {
     private String title;
     private String isbn;
 
+    private PublisherVO publisher;
+    private Set<AuthorVO> authors = new HashSet<>();
 
-//    @ManyToOne
-//    private PublisherVO publisher;
-//
-//    @ManyToMany
-//    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
-//    inverseJoinColumns = @JoinColumn(name = "author_id"))
-//    private Set<AuthorVO> authors = new HashSet<>();
-
-//    public PublisherVO getPublisher() {
-//        return publisher;
-//    }
+    public PublisherVO getPublisher() {
+        return publisher;
+    }
 
     public BookVO() {
     }
@@ -32,9 +26,9 @@ public class BookVO implements Serializable {
         this.isbn = isbn;
     }
 
-//    public void setPublisher(PublisherVO publisher) {
-//        this.publisher = publisher;
-//    }
+    public void setPublisher(PublisherVO publisher) {
+        this.publisher = publisher;
+    }
 
     public Long getId() {
         return id;
@@ -60,13 +54,13 @@ public class BookVO implements Serializable {
         this.isbn = isbn;
     }
 
-//    public Set<AuthorVO> getAuthors() {
-//        return authors;
-//    }
+    public Set<AuthorVO> getAuthors() {
+        return authors;
+    }
 
-//    public void setAuthors(Set<AuthorVO> authors) {
-//        this.authors = authors;
-//    }
+    public void setAuthors(Set<AuthorVO> authors) {
+        this.authors = authors;
+    }
 
     @Override
     public String toString() {

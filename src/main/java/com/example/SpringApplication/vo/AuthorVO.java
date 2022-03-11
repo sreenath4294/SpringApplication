@@ -1,8 +1,6 @@
 package com.example.SpringApplication.vo;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 public class AuthorVO implements Serializable {
@@ -11,8 +9,7 @@ public class AuthorVO implements Serializable {
     private String firstname;
     private String lastname;
 
-//    @ManyToMany (mappedBy = "authors")
-//    private Set<BookVO> books = new HashSet<>();
+    private Set<BookVO> books;
 
     public AuthorVO() {
     }
@@ -46,13 +43,13 @@ public class AuthorVO implements Serializable {
         this.lastname = lastname;
     }
 
-//    public Set<BookVO> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<BookVO> books) {
-//        this.books = books;
-//    }
+    public Set<BookVO> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<BookVO> books) {
+        this.books = books;
+    }
 
     @Override
     public String  toString() {

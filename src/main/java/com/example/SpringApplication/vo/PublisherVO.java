@@ -13,9 +13,7 @@ public class PublisherVO implements Serializable {
     private String addressLine1;
     private String addressLine2;
 
-//    @OneToMany
-//    @JoinColumn(name = "publisher_id")
-//    private Set<BookVO> books = new HashSet<>();
+    private Set<BookVO> books;
 
     public PublisherVO() {
     }
@@ -26,13 +24,13 @@ public class PublisherVO implements Serializable {
         this.addressLine2 = addressLine2;
     }
 
-//    public Set<BookVO> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<BookVO> books) {
-//        this.books = books;
-//    }
+    public Set<BookVO> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<BookVO> books) {
+        this.books = books;
+    }
 
     public Long getId() {
         return id;
