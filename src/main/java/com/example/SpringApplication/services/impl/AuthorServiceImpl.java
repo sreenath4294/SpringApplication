@@ -49,10 +49,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     public Author mapFromVo (AuthorVO authorVO){
-        Author author = new Author();
+        Author author = Author.builder()
+                .firstname(authorVO.getFirstname())
+                .lastname(authorVO.getLastname())
+                .build();
 
-        author.setFirstname(authorVO.getFirstname());
-        author.setLastname(authorVO.getLastname());
         return author;
     }
 

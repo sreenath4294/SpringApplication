@@ -42,11 +42,10 @@ public class BookServiceImpl implements BookService {
 
     public Book mapFromVo (BookVO bookVO) {
 
-        Book book = new Book();
-
-        book.setId(bookVO.getId());
-        book.setTitle(bookVO.getTitle());
-        book.setIsbn(bookVO.getIsbn());
+        Book book = Book.builder()
+                .title(bookVO.getTitle())
+                .isbn(bookVO.getIsbn())
+                .build();
 
         return book;
     }

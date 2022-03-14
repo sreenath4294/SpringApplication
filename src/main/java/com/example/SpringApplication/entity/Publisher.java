@@ -8,14 +8,24 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
+@Data
+@Builder
 @Table(name = "PUBLISHER")
 public class Publisher {
 
+    @Id
+    @Column(name = "PUBLISHER_ID")
+    @GeneratedValue
     private Long id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "ADDRESS_LINE1")
     private String addressLine1;
+
+    @Column(name = "ADDRESS_LINE2")
     private String addressLine2;
 
     @OneToMany
@@ -25,44 +35,6 @@ public class Publisher {
     public Publisher(String name, String addressLine1, String addressLine2) {
         this.name = name;
         this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-    }
-
-    @Id
-    @Column(name = "PUBLISHER_ID")
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Column(name = "NAME")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Column(name = "ADDRESS_LINE1")
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-
-    @Column(name = "ADDRESS_LINE2")
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
 }

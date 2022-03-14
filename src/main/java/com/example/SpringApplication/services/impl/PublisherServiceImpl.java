@@ -43,12 +43,11 @@ public class PublisherServiceImpl implements PublisherService {
 
     public Publisher mapFromVo (PublisherVO publisherVO) {
 
-        Publisher publisher = new Publisher();
-
-        publisher.setId(publisherVO.getId());
-        publisher.setName(publisherVO.getName());
-        publisher.setAddressLine1(publisherVO.getAddressLine1());
-        publisher.setAddressLine2(publisherVO.getAddressLine2());
+        Publisher publisher = Publisher.builder()
+                .name(publisherVO.getName())
+                .addressLine1(publisherVO.getAddressLine1())
+                .addressLine2(publisherVO.getAddressLine2())
+                .build();
 
         return publisher;
     }

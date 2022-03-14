@@ -8,13 +8,21 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
+@Data
+@Builder
 @Table(name = "BOOK")
 public class Book {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "BOOK_ID")
     private Long id;
+
+    @Column(name = "TITLE")
     private String title;
+
+    @Column(name = "ISBN")
     private String isbn;
 
     @ManyToOne
@@ -27,35 +35,6 @@ public class Book {
 
     public Book(String title, String isbn) {
         this.title = title;
-        this.isbn = isbn;
-    }
-
-    @Id
-    @GeneratedValue
-    @Column(name = "BOOK_ID")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Column(name = "TITLE")
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Column(name = "ISBN")
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 }
