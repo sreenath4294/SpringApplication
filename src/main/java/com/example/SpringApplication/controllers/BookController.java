@@ -13,14 +13,14 @@ public class BookController {
 
     @Autowired
     public BookService bookService;
-//
+
     @GetMapping("/books")
     public List<BookVO> getBooks() {
         return bookService.getBooks();
     }
-//
-//    @PostMapping("/addbook")
-//    public void addBook(@RequestBody BookVO book){
-//        bookService.addBook(book);
-//    }
+
+    @PostMapping("/addbook")
+    public void addBook(@RequestBody BookVO book){
+        bookService.addBook(book);
+    }
 }

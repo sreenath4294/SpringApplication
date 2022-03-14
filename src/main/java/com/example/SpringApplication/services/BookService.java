@@ -16,5 +16,5 @@ public interface BookService {
     List<BookVO> getBooks();
 
 
-//    void addBook(BookVO book);
+    void addBook(BookVO book);
 }

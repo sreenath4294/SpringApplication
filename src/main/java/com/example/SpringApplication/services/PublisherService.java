@@ -11,5 +11,5 @@ public interface PublisherService {
 
     List<PublisherVO> getPublishers();
 
-//    void addPublisher(PublisherVO publisher);
+    void addPublisher(PublisherVO publisher);
 }

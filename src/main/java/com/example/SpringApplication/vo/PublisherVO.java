@@ -1,10 +1,15 @@
 package com.example.SpringApplication.vo;
 
-import javax.persistence.*;
+import lombok.*;
+
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class PublisherVO implements Serializable {
 
     private Long id;
@@ -14,9 +19,6 @@ public class PublisherVO implements Serializable {
     private String addressLine2;
 
     private Set<BookVO> books;
-
-    public PublisherVO() {
-    }
 
     public PublisherVO(String name, String addressLine1, String addressLine2) {
         this.name = name;
@@ -30,62 +32,5 @@ public class PublisherVO implements Serializable {
 
     public void setBooks(Set<BookVO> books) {
         this.books = books;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", addressLine2='" + addressLine2 + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PublisherVO publisher = (PublisherVO) o;
-
-        return id != null ? id.equals(publisher.id) : publisher.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 }

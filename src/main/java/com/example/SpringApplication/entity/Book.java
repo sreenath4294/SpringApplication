@@ -1,10 +1,15 @@
 package com.example.SpringApplication.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Table(name = "BOOK")
 public class Book {
 
@@ -19,9 +24,6 @@ public class Book {
 //    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
 //    inverseJoinColumns = @JoinColumn(name = "author_id"))
 //    private Set<Author> authors = new HashSet<>();
-
-    public Book() {
-    }
 
     public Book(String title, String isbn) {
         this.title = title;
@@ -55,34 +57,5 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
-        if (id != null ? !id.equals(book.id) : book.id != null) return false;
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        return isbn != null ? isbn.equals(book.isbn) : book.isbn == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                '}';
     }
 }

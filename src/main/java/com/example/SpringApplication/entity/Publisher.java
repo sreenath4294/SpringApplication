@@ -1,10 +1,15 @@
 package com.example.SpringApplication.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Table(name = "PUBLISHER")
 public class Publisher {
 
@@ -16,9 +21,6 @@ public class Publisher {
     @OneToMany
     @JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
-
-    public Publisher() {
-    }
 
     public Publisher(String name, String addressLine1, String addressLine2) {
         this.name = name;
@@ -62,38 +64,5 @@ public class Publisher {
 
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Publisher publisher = (Publisher) o;
-
-        if (id != null ? !id.equals(publisher.id) : publisher.id != null) return false;
-        if (name != null ? !name.equals(publisher.name) : publisher.name != null) return false;
-        if (addressLine1 != null ? !addressLine1.equals(publisher.addressLine1) : publisher.addressLine1 != null)
-            return false;
-        return addressLine2 != null ? addressLine2.equals(publisher.addressLine2) : publisher.addressLine2 == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (addressLine1 != null ? addressLine1.hashCode() : 0);
-        result = 31 * result + (addressLine2 != null ? addressLine2.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", addressLine2='" + addressLine2 + '\'' +
-                '}';
     }
 }

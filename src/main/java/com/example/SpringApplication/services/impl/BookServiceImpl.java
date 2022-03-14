@@ -25,6 +25,10 @@ public class BookServiceImpl implements BookService {
                 .collect(Collectors.toList()));
     }
 
+    public void addBook(BookVO bookVO){
+        bookRepository.save(this.mapFromVo(bookVO));
+    }
+
     public BookVO mapToVo (Book book) {
 
         BookVO bookVo = new BookVO();
@@ -35,8 +39,15 @@ public class BookServiceImpl implements BookService {
 
         return bookVo;
     }
-//
-//    public void addBook(BookVO book){
-//        bookRepository.save(book);
-//    }
+
+    public Book mapFromVo (BookVO bookVO) {
+
+        Book book = new Book();
+
+        book.setId(bookVO.getId());
+        book.setTitle(bookVO.getTitle());
+        book.setIsbn(bookVO.getIsbn());
+
+        return book;
+    }
 }

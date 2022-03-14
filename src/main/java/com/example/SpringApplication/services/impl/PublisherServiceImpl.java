@@ -16,13 +16,17 @@ import java.util.stream.Collectors;
 public class PublisherServiceImpl implements PublisherService {
 
     @Autowired
-    private PublisherRepository publisherrepository;
+    private PublisherRepository publisherRepository;
 
     public List<PublisherVO> getPublishers(){
-        return ((List<PublisherVO>) publisherrepository.findAll()
+        return ((List<PublisherVO>) publisherRepository.findAll()
                 .stream()
                 .map(this::mapToVo)
                 .collect(Collectors.toList()));
+    }
+
+    public void addPublisher(PublisherVO publisher){
+        publisherRepository.save(this.mapFromVo(publisher));
     }
 
     public PublisherVO mapToVo (Publisher publisher) {
@@ -37,7 +41,15 @@ public class PublisherServiceImpl implements PublisherService {
         return publisherVo;
     }
 
-//    public void addPublisher(PublisherVO publisher){
-//        publisherRepository.save(publisher);
-//    }
+    public Publisher mapFromVo (PublisherVO publisherVO) {
+
+        Publisher publisher = new Publisher();
+
+        publisher.setId(publisherVO.getId());
+        publisher.setName(publisherVO.getName());
+        publisher.setAddressLine1(publisherVO.getAddressLine1());
+        publisher.setAddressLine2(publisherVO.getAddressLine2());
+
+        return publisher;
+    }
 }
