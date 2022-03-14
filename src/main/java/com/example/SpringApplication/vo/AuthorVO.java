@@ -5,11 +5,10 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
 public class AuthorVO implements Serializable {
 
     private Long id;

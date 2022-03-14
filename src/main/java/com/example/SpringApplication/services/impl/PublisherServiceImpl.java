@@ -31,12 +31,12 @@ public class PublisherServiceImpl implements PublisherService {
 
     public PublisherVO mapToVo (Publisher publisher) {
 
-        PublisherVO publisherVo = new PublisherVO();
-
-        publisherVo.setId(publisher.getId());
-        publisherVo.setName(publisher.getName());
-        publisherVo.setAddressLine1(publisher.getAddressLine1());
-        publisherVo.setAddressLine2(publisher.getAddressLine2());
+        PublisherVO publisherVo = PublisherVO.builder()
+                .id(publisher.getId())
+                .name(publisher.getName())
+                .addressLine1(publisher.getAddressLine1())
+                .addressLine2(publisher.getAddressLine2())
+                .build();
 
         return publisherVo;
     }

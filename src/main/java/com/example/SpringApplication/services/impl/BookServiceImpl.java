@@ -31,11 +31,11 @@ public class BookServiceImpl implements BookService {
 
     public BookVO mapToVo (Book book) {
 
-        BookVO bookVo = new BookVO();
-
-        bookVo.setId(book.getId());
-        bookVo.setTitle(book.getTitle());
-        bookVo.setIsbn(book.getIsbn());
+        BookVO bookVo = BookVO.builder()
+                .id(book.getId())
+                .title(book.getTitle())
+                .isbn(book.getIsbn())
+                .build();
 
         return bookVo;
     }

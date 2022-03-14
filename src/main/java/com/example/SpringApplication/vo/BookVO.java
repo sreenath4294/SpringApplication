@@ -7,11 +7,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
 public class BookVO implements Serializable {
 
     private Long id;

@@ -5,11 +5,10 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@AllArgsConstructor
 public class PublisherVO implements Serializable {
 
     private Long id;
@@ -24,13 +23,5 @@ public class PublisherVO implements Serializable {
         this.name = name;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
-    }
-
-    public Set<BookVO> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<BookVO> books) {
-        this.books = books;
     }
 }
