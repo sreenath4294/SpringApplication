@@ -16,9 +16,4 @@ public class AuthorVO implements Serializable {
     private String lastname;
 
     private Set<BookVO> books;
-
-    public AuthorVO(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
 }

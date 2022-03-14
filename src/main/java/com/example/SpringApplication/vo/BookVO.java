@@ -19,17 +19,4 @@ public class BookVO implements Serializable {
 
     private PublisherVO publisher;
     private Set<AuthorVO> authors = new HashSet<>();
-
-    public PublisherVO getPublisher() {
-        return publisher;
-    }
-
-    public BookVO(String title, String isbn) {
-        this.title = title;
-        this.isbn = isbn;
-    }
-
-    public void setPublisher(PublisherVO publisher) {
-        this.publisher = publisher;
-    }
 }
