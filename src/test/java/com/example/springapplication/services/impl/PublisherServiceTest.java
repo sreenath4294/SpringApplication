@@ -3,6 +3,7 @@ package com.example.springapplication.services.impl;
 import com.example.springapplication.entity.Publisher;
 import com.example.springapplication.repository.PublisherRepository;
 import com.example.springapplication.services.PublisherService;
+import com.example.springapplication.vo.AuthorVO;
 import com.example.springapplication.vo.PublisherVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
@@ -28,13 +34,13 @@ class PublisherServiceTest {
 
     @Test
     void canAddPublisher(){
-        Publisher publisher = Publisher.builder()
+        PublisherVO publisherVo = PublisherVO.builder()
                 .name("Books")
                 .addressLine1("Kochi")
                 .addressLine2("Kerala")
                 .build();
 
-        publisherRepositorytest.save(publisher);
+        publisherService.addPublisher(publisherVo);
 
         ArgumentCaptor<Publisher> publisherArgumentCaptor = ArgumentCaptor.forClass(Publisher.class);
 
@@ -42,11 +48,23 @@ class PublisherServiceTest {
 
         Publisher capturedPublisher = publisherArgumentCaptor.getValue();
 
-        assertSame(capturedPublisher, publisher);
+        assertEquals(capturedPublisher.getName(), publisherVo.getName());
+        assertEquals(capturedPublisher.getAddressLine1(), publisherVo.getAddressLine1());
+        assertEquals(capturedPublisher.getAddressLine2(), publisherVo.getAddressLine2());
     }
 
     @Test
-    void getVoFromMapToVo(){
+    void canGetAuthors(){
+        List<PublisherVO> authors = publisherService.getPublishers();
+        List<PublisherVO> capturedAuthors = publisherRepositorytest.findAll()
+                .stream()
+                .map(publisherService::mapToVo)
+                .collect(Collectors.toList());
+        assertThat(authors, is(capturedAuthors));
+    }
+
+    @Test
+    void canMapToVo(){
         Publisher publisher = Publisher.builder()
                 .name("Books")
                 .addressLine1("Kochi")
@@ -61,12 +79,12 @@ class PublisherServiceTest {
 
         PublisherVO mappedPublisherVo = publisherService.mapToVo(publisher);
 
-        assertEquals(mappedPublisherVo.getName(), publisherVO.getName());
+        assertEquals(mappedPublisherVo, publisherVO);
 
     }
 
     @Test
-    void getVoFromMapFromVo(){
+    void canMapFromVo(){
         Publisher publisher = Publisher.builder()
                 .name("Books")
                 .addressLine1("Kochi")
@@ -81,7 +99,7 @@ class PublisherServiceTest {
 
         Publisher mappedPublisher = publisherService.mapFromVo(publisherVO);
 
-        assertEquals(mappedPublisher.getName(), publisher.getName());
+        assertEquals(mappedPublisher, publisher);
 
     }
 }

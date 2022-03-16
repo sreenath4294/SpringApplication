@@ -3,6 +3,7 @@ package com.example.springapplication.services.impl;
 import com.example.springapplication.entity.Book;
 import com.example.springapplication.repository.BookRepository;
 import com.example.springapplication.services.BookService;
+import com.example.springapplication.vo.AuthorVO;
 import com.example.springapplication.vo.BookVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
@@ -28,12 +34,12 @@ class BookServiceTest {
 
     @Test
     void canAddAuthor(){
-        Book book = Book.builder()
+        BookVO bookVO = BookVO.builder()
                 .title("Harrry potter")
                 .isbn("96824")
                 .build();
 
-        bookRepositorytest.save(book);
+        bookService.addBook(bookVO);
 
         ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
 
@@ -41,12 +47,22 @@ class BookServiceTest {
 
         Book capturedBook = bookArgumentCaptor.getValue();
 
-        assertSame(capturedBook, book);
+        assertEquals(capturedBook.getTitle(), bookVO.getTitle());
+        assertEquals(capturedBook.getIsbn(), bookVO.getIsbn());
     }
 
+    @Test
+    void canGetBooks(){
+        List<BookVO> authors = bookService.getBooks();
+        List<BookVO> capturedAuthors = bookRepositorytest.findAll()
+                .stream()
+                .map(bookService::mapToVo)
+                .collect(Collectors.toList());
+        assertThat(authors, is(capturedAuthors));
+    }
 
     @Test
-    void getVoFromMapToVo(){
+    void canMapToVo(){
         Book book = Book.builder()
                 .title("Harrry potter")
                 .isbn("96824")
@@ -59,12 +75,12 @@ class BookServiceTest {
 
         BookVO mappedAuthorVO = bookService.mapToVo(book);
 
-        assertEquals(mappedAuthorVO.getTitle(), bookVo.getTitle());
+        assertEquals(mappedAuthorVO, bookVo);
 
     }
 
     @Test
-    void getVoFromMapFromVo(){
+    void canMapFromVo(){
         Book book = Book.builder()
                 .title("Harrry potter")
                 .isbn("96824")
@@ -77,7 +93,7 @@ class BookServiceTest {
 
         Book mappedBook = bookService.mapFromVo(bookVO);
 
-        assertEquals(mappedBook.getTitle(), book.getTitle());
+        assertEquals(mappedBook, book);
 
     }
 

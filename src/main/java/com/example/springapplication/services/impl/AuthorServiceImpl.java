@@ -57,7 +57,4 @@ public class AuthorServiceImpl implements AuthorService {
                 .build();
     }
 
-//    public void deleteAuthor(Long id){
-//        authorComponent.deleteAuthor(id);
-//    }
 }

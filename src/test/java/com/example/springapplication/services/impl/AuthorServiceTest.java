@@ -10,6 +10,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -28,12 +33,13 @@ class AuthorServiceTest {
 
     @Test
     void canAddAuthor(){
-        Author author = Author.builder()
+        AuthorVO authorVO = AuthorVO.builder()
+                .id(1L)
                 .firstname("John")
                 .lastname("Honai")
                 .build();
 
-        authorRepositorytest.save(author);
+        authorService.addAuthor(authorVO);
 
         ArgumentCaptor<Author> authorArgumentCaptor = ArgumentCaptor.forClass(Author.class);
 
@@ -41,21 +47,22 @@ class AuthorServiceTest {
 
         Author capturedAuthor = authorArgumentCaptor.getValue();
 
-       assertSame(capturedAuthor, author);
+        assertEquals(capturedAuthor.getFirstname(), authorVO.getFirstname());
+        assertEquals(capturedAuthor.getLastname(), authorVO.getLastname());
     }
 
-//    @Test
-//    void canGetAuthors(){
-//        List<AuthorVO> authorVos = authorService.getAuthors();
-////        verify(authorRepositorytest.findAll());
-//
-//        List<Author> capturedAuthors = authorRepositorytest.findAll();
-//
-//        assertSame(capturedAuthors, authorVos);
-//    }
+    @Test
+    void canGetAuthors(){
+        List<AuthorVO> authors = authorService.getAuthors();
+        List<AuthorVO> capturedAuthors = authorRepositorytest.findAll()
+                .stream()
+                .map(authorService::mapToVo)
+                .collect(Collectors.toList());
+        assertThat(authors, is(capturedAuthors));
+    }
 
     @Test
-    void getVoFromMapToVo(){
+    void canMapToVo(){
         Author author = Author.builder()
                 .firstname("John")
                 .lastname("Honai")
@@ -68,12 +75,12 @@ class AuthorServiceTest {
 
         AuthorVO mappedAuthorVO = authorService.mapToVo(author);
 
-        assertEquals(mappedAuthorVO.getFirstname(), authorVO.getFirstname());
+        assertEquals(mappedAuthorVO, authorVO);
 
     }
 
     @Test
-    void getVoFromMapFromVo(){
+    void canMapFromVo(){
         Author author = Author.builder()
                 .firstname("John")
                 .lastname("Honai")
@@ -86,7 +93,7 @@ class AuthorServiceTest {
 
         Author mappedAuthor = authorService.mapFromVo(authorVO);
 
-        assertEquals(mappedAuthor.getFirstname(), author.getFirstname());
+        assertEquals(mappedAuthor, author);
 
     }
 }
