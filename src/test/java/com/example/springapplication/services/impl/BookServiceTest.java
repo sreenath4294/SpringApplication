@@ -3,7 +3,6 @@ package com.example.springapplication.services.impl;
 import com.example.springapplication.entity.Book;
 import com.example.springapplication.repository.BookRepository;
 import com.example.springapplication.services.BookService;
-import com.example.springapplication.vo.AuthorVO;
 import com.example.springapplication.vo.BookVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,12 +23,12 @@ import static org.mockito.Mockito.verify;
 class BookServiceTest {
 
     @Mock
-    private BookRepository bookRepositorytest;
+    private BookRepository bookRepositoryTest;
     private BookService bookService;
 
     @BeforeEach
     void setUp(){
-        bookService = new BookServiceImpl(bookRepositorytest);
+        bookService = new BookServiceImpl(bookRepositoryTest);
     }
 
     @Test
@@ -43,7 +42,7 @@ class BookServiceTest {
 
         ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
 
-        verify(bookRepositorytest).save(bookArgumentCaptor.capture());
+        verify(bookRepositoryTest).save(bookArgumentCaptor.capture());
 
         Book capturedBook = bookArgumentCaptor.getValue();
 
@@ -54,7 +53,7 @@ class BookServiceTest {
     @Test
     void canGetBooks(){
         List<BookVO> authors = bookService.getBooks();
-        List<BookVO> capturedAuthors = bookRepositorytest.findAll()
+        List<BookVO> capturedAuthors = bookRepositoryTest.findAll()
                 .stream()
                 .map(bookService::mapToVo)
                 .collect(Collectors.toList());

@@ -23,12 +23,12 @@ import static org.mockito.Mockito.verify;
 class AuthorServiceTest {
 
     @Mock
-    private AuthorRepository authorRepositorytest;
+    private AuthorRepository authorRepositoryTest;
     private AuthorService authorService;
 
     @BeforeEach
     void setUp(){
-        authorService = new AuthorServiceImpl(authorRepositorytest);
+        authorService = new AuthorServiceImpl(authorRepositoryTest);
     }
 
     @Test
@@ -36,14 +36,14 @@ class AuthorServiceTest {
         AuthorVO authorVO = AuthorVO.builder()
                 .id(1L)
                 .firstname("John")
-                .lastname("Honai")
+                .lastname("Williams")
                 .build();
 
         authorService.addAuthor(authorVO);
 
         ArgumentCaptor<Author> authorArgumentCaptor = ArgumentCaptor.forClass(Author.class);
 
-        verify(authorRepositorytest).save(authorArgumentCaptor.capture());
+        verify(authorRepositoryTest).save(authorArgumentCaptor.capture());
 
         Author capturedAuthor = authorArgumentCaptor.getValue();
 
@@ -54,7 +54,7 @@ class AuthorServiceTest {
     @Test
     void canGetAuthors(){
         List<AuthorVO> authors = authorService.getAuthors();
-        List<AuthorVO> capturedAuthors = authorRepositorytest.findAll()
+        List<AuthorVO> capturedAuthors = authorRepositoryTest.findAll()
                 .stream()
                 .map(authorService::mapToVo)
                 .collect(Collectors.toList());
@@ -65,12 +65,12 @@ class AuthorServiceTest {
     void canMapToVo(){
         Author author = Author.builder()
                 .firstname("John")
-                .lastname("Honai")
+                .lastname("Williams")
                 .build();
 
         AuthorVO authorVO = AuthorVO.builder()
                 .firstname("John")
-                .lastname("Honai")
+                .lastname("Williams")
                 .build();
 
         AuthorVO mappedAuthorVO = authorService.mapToVo(author);
@@ -83,12 +83,12 @@ class AuthorServiceTest {
     void canMapFromVo(){
         Author author = Author.builder()
                 .firstname("John")
-                .lastname("Honai")
+                .lastname("Williams")
                 .build();
 
         AuthorVO authorVO = AuthorVO.builder()
                 .firstname("John")
-                .lastname("Honai")
+                .lastname("Williams")
                 .build();
 
         Author mappedAuthor = authorService.mapFromVo(authorVO);

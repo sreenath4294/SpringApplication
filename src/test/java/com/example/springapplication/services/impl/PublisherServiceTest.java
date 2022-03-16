@@ -3,7 +3,6 @@ package com.example.springapplication.services.impl;
 import com.example.springapplication.entity.Publisher;
 import com.example.springapplication.repository.PublisherRepository;
 import com.example.springapplication.services.PublisherService;
-import com.example.springapplication.vo.AuthorVO;
 import com.example.springapplication.vo.PublisherVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,12 +23,12 @@ import static org.mockito.Mockito.verify;
 class PublisherServiceTest {
 
     @Mock
-    private PublisherRepository publisherRepositorytest;
+    private PublisherRepository publisherRepositoryTest;
     private PublisherService publisherService;
 
     @BeforeEach
     void setUp(){
-        publisherService = new PublisherServiceImpl(publisherRepositorytest);
+        publisherService = new PublisherServiceImpl(publisherRepositoryTest);
     }
 
     @Test
@@ -44,7 +43,7 @@ class PublisherServiceTest {
 
         ArgumentCaptor<Publisher> publisherArgumentCaptor = ArgumentCaptor.forClass(Publisher.class);
 
-        verify(publisherRepositorytest).save(publisherArgumentCaptor.capture());
+        verify(publisherRepositoryTest).save(publisherArgumentCaptor.capture());
 
         Publisher capturedPublisher = publisherArgumentCaptor.getValue();
 
@@ -56,7 +55,7 @@ class PublisherServiceTest {
     @Test
     void canGetAuthors(){
         List<PublisherVO> authors = publisherService.getPublishers();
-        List<PublisherVO> capturedAuthors = publisherRepositorytest.findAll()
+        List<PublisherVO> capturedAuthors = publisherRepositoryTest.findAll()
                 .stream()
                 .map(publisherService::mapToVo)
                 .collect(Collectors.toList());

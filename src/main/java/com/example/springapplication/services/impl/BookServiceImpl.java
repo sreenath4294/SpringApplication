@@ -41,7 +41,6 @@ public class BookServiceImpl implements BookService {
                 .id(book.getId())
                 .title(book.getTitle())
                 .isbn(book.getIsbn())
-//                .publisher(publisherService.mapToVo(book.getPublisher()))
                 .build();
     }
 
@@ -50,7 +49,6 @@ public class BookServiceImpl implements BookService {
         return  Book.builder()
                 .title(bookVO.getTitle())
                 .isbn(bookVO.getIsbn())
-//                .publisher(publisherService.mapFromVo(bookVO.getPublisher()))
                 .build();
     }
 }
