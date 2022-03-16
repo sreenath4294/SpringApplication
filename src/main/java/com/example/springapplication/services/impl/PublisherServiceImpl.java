@@ -4,6 +4,7 @@ import com.example.springapplication.entity.Publisher;
 import com.example.springapplication.repository.PublisherRepository;
 import com.example.springapplication.services.PublisherService;
 import com.example.springapplication.vo.PublisherVO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Component
 @Transactional
 public class PublisherServiceImpl implements PublisherService {

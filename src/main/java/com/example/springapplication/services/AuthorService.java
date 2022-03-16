@@ -9,6 +9,8 @@ public interface AuthorService {
 
     AuthorVO mapToVo (Author author);
 
+    Author mapFromVo(AuthorVO authorVO);
+
     List<AuthorVO> getAuthors();
 
     AuthorVO getAuthor(Long authorId);
